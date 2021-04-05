@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const button = document.getElementById('push');
 
   function pushNotification1() {
     alert('Function 1');
