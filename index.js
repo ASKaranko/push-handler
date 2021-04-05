@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const int = [0, 20, 40];
 
   for (let i = 0; i < int.length; i++) {
-    if (time > int[i] && time <= 5 + int[i]) {
+    if (time >= int[i] && time <= 5 + int[i]) {
       pushNotification1();
       console.log(int[i]);
     } else if (time > int[i] + 5 && time <= 10 + int[i]) {
