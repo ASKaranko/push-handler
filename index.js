@@ -1,5 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  let state = false;
+
+  document.cookie.split(';').filter((item) => {
+    if (item.includes('pushNotif=true')) {
+      state = true;
+    }
+  });
+
+  if (!state) {
+    randomPush();
+  }
+  
+  function randomPush () {
+    document.cookie = "pushNotif=false; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
+    document.cookie.split(';').filter((item) => {
+      if (item.includes('pushNotif=false')) {
+        if (Math.random() < 0.25) {
+          pushNotification1();
+          
+        } else if (Math.random() >= 0.25 && Math.random() < 0.5) {
+          pushNotification2();
+          
+        } else if (Math.random() >= 0.5 && Math.random() < 0.75) {
+          pushNotification3();
+          
+        } else if (Math.random() >= 0.75 && Math.random() <= 1) {
+          pushNotification4();
+          
+        }
+        document.cookie = "pushNotif=true; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
+      }
+    });
+  }
+ 
   function pushNotification1() {
     alert('Function 1');
   }
@@ -16,27 +50,4 @@ document.addEventListener('DOMContentLoaded', () => {
     alert('Function 4');
   }
 
-  const date = new Date();
-  const time = date.getUTCMinutes();
-
-
-  const int = [0, 20, 40];
-
-  for (let i = 0; i < int.length; i++) {
-    if (time >= int[i] && time <= 5 + int[i]) {
-      pushNotification1();
-      console.log(int[i]);
-    } else if (time > int[i] + 5 && time <= 10 + int[i]) {
-      pushNotification2();
-      console.log(int[i]);
-    } else if (time > 10 + int[i] && time <= 15 + int[i]) {
-      pushNotification3();
-      console.log(int[i]);
-    } else if (time > 15 + int[i] && time <= 20 + int[i]) {
-      pushNotification4();
-      console.log(int[i]);
-    }
-  }
 });
-
-
