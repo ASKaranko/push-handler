@@ -78,35 +78,55 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function pushNotification4() {
-    document.body.insertAdjacentHTML("beforeend", `<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js" defer></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-messaging.js" defer></script>`);
-    const config = {
-      apiKey: "AIzaSyD6at4dkd8J_2H2xYSXFwdYjOQvzgQdSok",
-      authDomain: "test-4d380.firebaseapp.com",
-      projectId: "test-4d380",
-      storageBucket: "test-4d380.appspot.com",
-      messagingSenderId: "359941483166",
-      appId: "1:359941483166:web:43bb2711ead5851a31e98f",
-      measurementId: "G-LHXYZLEQM1"
-    };
+
+    // import('./firebase.js')
+    //   .then(module => {
+    //     console.log(module);
+    //   })
+    //   .catch(err => {
+    //     main.textContent = err.message;
+    //   });
+
+    const head = document.getElementsByTagName('head')[0];
+
+        const script = document.createElement('script');
+        script.src = "https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js";
+        script.type = 'text/javascript';
+        head.append(script);
+        const script1 = document.createElement('script');
+        script1.src = "https://www.gstatic.com/firebasejs/8.3.3/firebase-messaging.js";
+        script1.type = 'text/javascript';
+        head.append(script1);
   
-    firebase.initializeApp(config);
-    const messaging = firebase.messaging();
-    messaging.requestPermission()
-      .then(() => {
-        console.log('Have Permission');
-        return messaging.getToken(`{vapidKey: "BBBZqXu7h8Ktnf_Jzif_v3gJtrMyJF0lyIXxtZQ6_cvLWsEsGS-xrkpPrc4lNIs42dluktsfhDhYDmtT8fp1cfs"}`);
-      })
-      .then(token => {
-        console.log(token);
-      })
-      .catch((err) => {
-        console.log('Error Occured');
-      });
+    setTimeout(() => {
+      const config = {
+        apiKey: "AIzaSyD6at4dkd8J_2H2xYSXFwdYjOQvzgQdSok",
+        authDomain: "test-4d380.firebaseapp.com",
+        projectId: "test-4d380",
+        storageBucket: "test-4d380.appspot.com",
+        messagingSenderId: "359941483166",
+        appId: "1:359941483166:web:43bb2711ead5851a31e98f",
+        measurementId: "G-LHXYZLEQM1"
+      };
   
-    messaging.onMessage(payload => {
-      console.log('onMessage', payload);
-    });
+          firebase.initializeApp(config);
+          const messaging = firebase.messaging();
+          messaging.requestPermission()
+            .then(() => {
+              console.log('Have Permission');
+              return messaging.getToken(`{vapidKey: "BBBZqXu7h8Ktnf_Jzif_v3gJtrMyJF0lyIXxtZQ6_cvLWsEsGS-xrkpPrc4lNIs42dluktsfhDhYDmtT8fp1cfs"}`);
+            })
+            .then(token => {
+              console.log(token);
+            })
+            .catch((err) => {
+              console.log('Error Occured');
+            });
+  
+          messaging.onMessage(payload => {
+            console.log('onMessage', payload);
+          });
+    }, 5000);
   }
 
   
