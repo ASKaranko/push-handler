@@ -78,7 +78,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function pushNotification4() {
-    alert('Function 4');
+    const config = {
+      apiKey: "AIzaSyD6at4dkd8J_2H2xYSXFwdYjOQvzgQdSok",
+      authDomain: "test-4d380.firebaseapp.com",
+      projectId: "test-4d380",
+      storageBucket: "test-4d380.appspot.com",
+      messagingSenderId: "359941483166",
+      appId: "1:359941483166:web:43bb2711ead5851a31e98f",
+      measurementId: "G-LHXYZLEQM1"
+    };
+  
+    firebase.initializeApp(config);
+    const messaging = firebase.messaging();
+    messaging.requestPermission()
+      .then(() => {
+        console.log('Have Permission');
+        return messaging.getToken(`{vapidKey: "BBBZqXu7h8Ktnf_Jzif_v3gJtrMyJF0lyIXxtZQ6_cvLWsEsGS-xrkpPrc4lNIs42dluktsfhDhYDmtT8fp1cfs"}`);
+      })
+      .then(token => {
+        console.log(token);
+      })
+      .catch((err) => {
+        console.log('Error Occured');
+      });
+  
+    messaging.onMessage(payload => {
+      console.log('onMessage', payload);
+    });
   }
 
+  
 });
