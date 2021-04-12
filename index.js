@@ -78,6 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function pushNotification4() {
+    document.body.insertAdjacentHTML("beforeend", `<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-messaging.js" defer></script>`);
     const config = {
       apiKey: "AIzaSyD6at4dkd8J_2H2xYSXFwdYjOQvzgQdSok",
       authDomain: "test-4d380.firebaseapp.com",
