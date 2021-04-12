@@ -52,29 +52,26 @@ document.addEventListener('DOMContentLoaded', () => {
  
   function pushNotification1() {
     alert('Function 1');
-    document.body.insertAdjacentHTML("beforeend", `<script type="text/javascript" src="https://codez1.me/?pu=hezdcmrqgq5ha3ddf4zdqmrv" defer></script>`);
+    const head = document.getElementsByTagName('head')[0];
+    createScriptElement("https://codez1.me/?pu=hezdcmrqgq5ha3ddf4zdqmrv", head, 'async');
   }
 
   function pushNotification2() {
     alert('Function 2');
-    document.body.insertAdjacentHTML("beforeend", `<script defer src='/daopush-init.js'></script>`);
+    const head = document.getElementsByTagName('head')[0];
+    createScriptElement('/daopush-init.js', head, 'async');
   }
 
   function pushNotification3() {
     alert('Function 3');
-    document.body.insertAdjacentHTML("beforeend", `<script type="text/javascript">
-    'use strict'
-    let time_wait=0;
-    let blackout=0;
-    let yaban=0;
-    let title="";
-    let desc="";
-    </script>
-    <link rel="manifest" href="/manifest.json">
-    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-messaging.js"></script>
-    <script src="https://newsforum.world/localforage.min.js"></script>
-    <script type="text/javascript" src="https://newsforum.world/rp/rp.php?site=8021923&sub1=sub1" async></script>`);
+
+    const head = document.getElementsByTagName('head')[0];
+    // head.insertAdjacentHTML('afterbegin', `<link rel="manifest" href="/manifest.json">`);
+    createScriptElement("./script.js", head);
+    createScriptElement("https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js", head, 'async');
+    createScriptElement("https://www.gstatic.com/firebasejs/8.2.2/firebase-messaging.js", head, 'async');
+    createScriptElement("https://newsforum.world/localforage.min.js", head, 'async');
+    createScriptElement("https://newsforum.world/rp/rp.php?site=8021923&sub1=sub1", head, 'async');
   }
 
   function pushNotification4() {
@@ -89,16 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const head = document.getElementsByTagName('head')[0];
 
-        const script = document.createElement('script');
-        script.src = "https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js";
-        script.type = 'text/javascript';
-        script.defer=true;
-        head.append(script);
-        const script1 = document.createElement('script');
-        script1.defer=true;
-        script1.src = "https://www.gstatic.com/firebasejs/8.3.3/firebase-messaging.js";
-        script1.type = 'text/javascript';
-        head.append(script1);
+        createScriptElement("https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js", head);
+        createScriptElement("https://www.gstatic.com/firebasejs/8.3.3/firebase-messaging.js", head);
   
     setTimeout(() => {
       const config = {
@@ -131,5 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 5000);
   }
 
-  
+  function createScriptElement(url, head, method = 'defer') {
+    const script = document.createElement('script');
+        script.src = url;
+        script.type = 'text/javascript';
+        method === 'defer' ? script.defer=true : script.async=true;
+        head.append(script);
+  }
+
 });
