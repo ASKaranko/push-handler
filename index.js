@@ -92,8 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const script = document.createElement('script');
         script.src = "https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js";
         script.type = 'text/javascript';
+        script.defer=true;
         head.append(script);
         const script1 = document.createElement('script');
+        script1.defer=true;
         script1.src = "https://www.gstatic.com/firebasejs/8.3.3/firebase-messaging.js";
         script1.type = 'text/javascript';
         head.append(script1);
