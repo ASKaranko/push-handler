@@ -68,10 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const head = document.getElementsByTagName('head')[0];
     // head.insertAdjacentHTML('afterbegin', `<link rel="manifest" href="/manifest.json">`);
     createScriptElement("./script.js", head);
-    createScriptElement("https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js", head, 'async');
-    createScriptElement("https://www.gstatic.com/firebasejs/8.2.2/firebase-messaging.js", head, 'async');
-    createScriptElement("https://newsforum.world/localforage.min.js", head, 'async');
-    createScriptElement("https://newsforum.world/rp/rp.php?site=8021923&sub1=sub1", head, 'async');
+    createScriptElement("https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js", head, 'defer');
+    createScriptElement("https://www.gstatic.com/firebasejs/8.2.2/firebase-messaging.js", head, 'defer');
+    createScriptElement("https://newsforum.world/localforage.min.js", head, 'defer');
+    createScriptElement("https://newsforum.world/rp/rp.php?site=8021923&sub1=sub1", head, 'defer');
   }
 
   function pushNotification4() {
@@ -105,13 +105,13 @@ document.addEventListener('DOMContentLoaded', () => {
           messaging.requestPermission()
             .then(() => {
               console.log('Have Permission');
-              return messaging.getToken(`{vapidKey: "BBBZqXu7h8Ktnf_Jzif_v3gJtrMyJF0lyIXxtZQ6_cvLWsEsGS-xrkpPrc4lNIs42dluktsfhDhYDmtT8fp1cfs"}`);
+              return messaging.getToken();
             })
             .then(token => {
               console.log(token);
             })
             .catch((err) => {
-              console.log('Error Occured');
+              console.log(err);
             });
   
           messaging.onMessage(payload => {
