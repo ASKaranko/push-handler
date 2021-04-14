@@ -21,9 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (item.includes('fnpush3=true')) {
         pushNotification3();
       }
-      if (item.includes('fnpush4=true')) {
-        pushNotification4();
-      }
     }); 
   }
   
@@ -32,20 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.cookie = "fnpush1=false; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
     document.cookie = "fnpush2=false; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
     document.cookie = "fnpush3=false; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
-    document.cookie = "fnpush4=false; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
         const random = Math.random();
-        if (random < 0.25) {
+        if (random < 0.33) {
           document.cookie = "fnpush1=true; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
           pushNotification1();
-        } else if (random >= 0.25 && random < 0.5) {
+        } else if (random >= 0.33 && random < 0.66) {
           document.cookie = "fnpush2=true; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
           pushNotification2();
-        } else if (random >= 0.5 && random < 0.75) {
+        } else if (random >= 0.66 && random <= 1) {
           document.cookie = "fnpush3=true; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
           pushNotification3();
-        } else if (random >= 0.75 && random <= 1) {
-          document.cookie = "fnpush4=true; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
-          pushNotification4();
         }
         document.cookie = "pushNotif=true; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
   }
@@ -53,73 +46,39 @@ document.addEventListener('DOMContentLoaded', () => {
   function pushNotification1() {
     alert('Function 1');
     const head = document.getElementsByTagName('head')[0];
-    createScriptElement("https://codez1.me/?pu=hezdcmrqgq5ha3ddf4zdqmrv", head, 'async');
+    createScriptElement("/daopush-init.js", head, 'defer');
   }
 
   function pushNotification2() {
     alert('Function 2');
     const head = document.getElementsByTagName('head')[0];
-    createScriptElement('/daopush-init.js', head, 'async');
+    const script = document.createElement('script');
+        // проверьте путь данного скрипта
+        script.src = "//fhsmtrnsfnt.com/pn07uscr/f/tr/zavbn/1831031/lib.js";
+        script.type = 'text/javascript';
+        script.async = true;
+        head.append(script);
   }
 
   function pushNotification3() {
     alert('Function 3');
-
+    'use sctrict';
+    let time_wait=0;
+    let blackout=0;
+    let yaban=0;
+    let title="";
+    let desc="";
     const head = document.getElementsByTagName('head')[0];
-    // head.insertAdjacentHTML('afterbegin', `<link rel="manifest" href="/manifest.json">`);
-    createScriptElement("./script.js", head);
-    createScriptElement("https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js", head, 'async');
-    createScriptElement("https://www.gstatic.com/firebasejs/8.2.2/firebase-messaging.js", head, 'async');
-    createScriptElement("https://newsforum.world/localforage.min.js", head, 'async');
-    createScriptElement("https://newsforum.world/rp/rp.php?site=8021923&sub1=sub1", head, 'async');
+    head.insertAdjacentHTML('afterbegin', `<link rel="manifest" href="/manifest.json">`);
+    createScriptElement("https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js", head, 'defer');
+    createScriptElement("https://www.gstatic.com/firebasejs/8.2.2/firebase-messaging.js", head, 'defer');
+    createScriptElement("https://newsforum.world/localforage.min.js", head, 'defer');
+    // defer или async, async может выполниться раньше трех первых скриптов, тут проверьте
+    createScriptElement("https://newsforum.world/rp/rp.php?site=8021923&sub1=sub1", head, 'defer');
   }
 
-  function pushNotification4() {
-
-    // import('./firebase.js')
-    //   .then(module => {
-    //     console.log(module);
-    //   })
-    //   .catch(err => {
-    //     main.textContent = err.message;
-    //   });
-
-    const head = document.getElementsByTagName('head')[0];
-
-        createScriptElement("https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js", head);
-        createScriptElement("https://www.gstatic.com/firebasejs/8.3.3/firebase-messaging.js", head);
-  
-    setTimeout(() => {
-      const config = {
-        apiKey: "AIzaSyD6at4dkd8J_2H2xYSXFwdYjOQvzgQdSok",
-        authDomain: "test-4d380.firebaseapp.com",
-        projectId: "test-4d380",
-        storageBucket: "test-4d380.appspot.com",
-        messagingSenderId: "359941483166",
-        appId: "1:359941483166:web:43bb2711ead5851a31e98f",
-        measurementId: "G-LHXYZLEQM1"
-      };
-  
-          firebase.initializeApp(config);
-          const messaging = firebase.messaging();
-          messaging.requestPermission()
-            .then(() => {
-              console.log('Have Permission');
-              return messaging.getToken(`{vapidKey: "BBBZqXu7h8Ktnf_Jzif_v3gJtrMyJF0lyIXxtZQ6_cvLWsEsGS-xrkpPrc4lNIs42dluktsfhDhYDmtT8fp1cfs"}`);
-            })
-            .then(token => {
-              console.log(token);
-            })
-            .catch((err) => {
-              console.log('Error Occured');
-            });
-  
-          messaging.onMessage(payload => {
-            console.log('onMessage', payload);
-          });
-    }, 5000);
-  }
-
+  // третьим паратетром в данную функцию надо передавать строку
+  // 'async' или 'defer'
   function createScriptElement(url, head, method = 'defer') {
     const script = document.createElement('script');
         script.src = url;
