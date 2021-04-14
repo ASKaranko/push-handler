@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (item.includes('fnpush3=true')) {
         pushNotification3();
       }
+      if (item.includes('fnpush4=true')) {
+        pushNotification4();
+      }
     }); 
   }
   
@@ -29,16 +32,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.cookie = "fnpush1=false; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
     document.cookie = "fnpush2=false; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
     document.cookie = "fnpush3=false; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
+    document.cookie = "fnpush4=false; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
         const random = Math.random();
-        if (random < 0.33) {
+        if (random < 0.25) {
           document.cookie = "fnpush1=true; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
           pushNotification1();
-        } else if (random >= 0.33 && random < 0.66) {
+        } else if (random >= 0.25 && random < 0.5) {
           document.cookie = "fnpush2=true; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
           pushNotification2();
-        } else if (random >= 0.66 && random <= 1) {
+        } else if (random >= 0.5 && random < 0.75) {
           document.cookie = "fnpush3=true; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
           pushNotification3();
+        } else if (random >= 0.75 && random <= 1) {
+          document.cookie = "fnpush4=true; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
+          pushNotification4();
         }
         document.cookie = "pushNotif=true; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
   }
@@ -57,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         script.src = "//fhsmtrnsfnt.com/pn07uscr/f/tr/zavbn/1831031/lib.js";
         script.type = 'text/javascript';
         script.async = true;
+        script.dataset.cfasync = false;
         head.append(script);
   }
 
@@ -75,6 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
     createScriptElement("https://newsforum.world/localforage.min.js", head, 'defer');
     // defer или async, async может выполниться раньше трех первых скриптов, тут проверьте
     createScriptElement("https://newsforum.world/rp/rp.php?site=8021923&sub1=sub1", head, 'defer');
+  }
+
+  function pushNotification4() {
+    alert('Function 4');
+    const head = document.getElementsByTagName('head')[0];
+    createScriptElement("https://codez1.me/?pu=hezdcmrqgq5ha3ddf4zdqmrv", head, 'async');
   }
 
   // третьим паратетром в данную функцию надо передавать строку
