@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (random < 0.33333) {
           document.cookie = "fnpush1=true; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
           pushNotification1();
-        } else if (random >= 0.3333 && random < 0.66666) {
+        } else if (random >= 0.33333 && random < 0.66666) {
           document.cookie = "fnpush2=true; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
           pushNotification2();
         } else if (random >= 0.66666 && random <= 1) {
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // defer или async, async может выполниться раньше трех первых скриптов, тут проверьте
     createScriptElement("https://newsforum.world/rp/rp.php?site=8021923&sub1=sub1", head, 'defer');
   }
-  
+
   // третьим паратетром в данную функцию надо передавать строку
   // 'async' или 'defer'
   function createScriptElement(url, head, method = 'defer') {
