@@ -44,13 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
  
   function pushNotification1() {
-    alert('Function 1');
     const head = document.getElementsByTagName('head')[0];
     createScriptElement("/daopush-init.js", head, 'defer');
   }
 
   function pushNotification2() {
-    alert('Function 2');
     const head = document.getElementsByTagName('head')[0];
     const script = document.createElement('script');
         // проверьте путь данного скрипта
@@ -62,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function pushNotification3() {
-    alert('Function 3');
     'use sctrict';
     let time_wait=0;
     let blackout=0;
